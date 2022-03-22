@@ -4,10 +4,9 @@ import { HomeComponent } from './home/home.component';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { JugadoresModule } from '../pages/jugadores.module';
 
 import { SharedRoutingModule } from "./shared-routing.module";
-import { BotonFlotanteComponent } from '../components/boton-flotante/boton-flotante.component';
+import { JugadoresModule } from '../jugadores/jugadores.module';
 
 @NgModule({
   declarations: [HomeComponent],

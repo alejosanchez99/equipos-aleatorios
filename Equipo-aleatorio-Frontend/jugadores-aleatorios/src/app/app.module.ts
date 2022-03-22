@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JugadoresModule } from './pages/jugadores.module';
 import { SharedModule } from './shared/shared.module';
+import { JugadoresModule } from './jugadores/jugadores.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({

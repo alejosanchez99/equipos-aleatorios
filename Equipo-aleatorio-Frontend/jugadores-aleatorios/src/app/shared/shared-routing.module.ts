@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { AgregarComponent } from "../pages/agregar/agregar.component";
-import { ListadoComponent } from '../pages/listado/listado.component';
-import { EquipoComponent } from '../pages/equipo/equipo.component';
-import { SeleccionEquiposComponent } from '../pages/seleccion-equipos/seleccion-equipos.component';
+import { AgregarComponent } from '../jugadores/pages/agregar/agregar.component';
+import { ListadoComponent } from '../jugadores/pages/listado/listado.component';
+import { EquipoComponent } from '../jugadores/pages/equipo/equipo.component';
+import { SeleccionEquiposComponent } from '../jugadores/pages/seleccion-equipos/seleccion-equipos.component';
 
 const rutas: Routes = [
   {
