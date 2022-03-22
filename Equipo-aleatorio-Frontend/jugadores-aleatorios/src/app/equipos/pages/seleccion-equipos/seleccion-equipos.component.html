@@ -7,10 +7,38 @@
   <div>
     <h1 class="encabezadoEquipo">Equipo 1</h1>
     <mat-divider></mat-divider>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [width]="270">
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <div class="contenedorTabla">
+    <table mat-table [dataSource]="dataSourceEquipoUno" class="mat-elevation-z8" [width]="270">
+
+      <ng-container matColumnDef="nombreJugador">
+        <th mat-header-cell *matHeaderCellDef> Nombre jugador </th>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.nombreJugador}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreTipoJugador">
+        <th mat-header-cell *matHeaderCellDef> Posición </th>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.tipoJugador.nombreTipoJugador}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+    </div>
+  </div>
+<div style="margin-left: 61px;">
+  <h1 class="encabezadoEquipo">Equipo 2</h1>
+  <mat-divider></mat-divider>
+  <div class="contenedorTabla">
+    <table mat-table [dataSource]="dataSourceEquipoDos" class="mat-elevation-z8" [width]="300">
+      <ng-container matColumnDef="nombreJugador">
+        <th mat-header-cell *matHeaderCellDef>  Nombre jugador </th>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.nombreJugador}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreTipoJugador">
+        <th mat-header-cell *matHeaderCellDef> Posición </th>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.tipoJugador.nombreTipoJugador}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -18,19 +46,6 @@
       </tr>
     </table>
   </div>
-<div style="margin-left: 30px;">
-  <h1 class="encabezadoEquipo">Equipo 2</h1>
-  <mat-divider></mat-divider>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [width]="300">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-    </tr>
-  </table>
  </div>
 </div>
 

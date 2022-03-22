@@ -5,7 +5,6 @@
 
     public class Equipo
     {
-        public List<Jugador> JugadoresEquipoUno { get; set; }
-        public List<Jugador> JugadoresEquipoDos { get; set; }
+        public List<Jugador> Jugadores { get; set; }
     }
 }

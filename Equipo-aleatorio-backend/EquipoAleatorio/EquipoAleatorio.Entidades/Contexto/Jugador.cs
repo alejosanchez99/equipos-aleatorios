@@ -12,11 +12,9 @@
         [Required]
         public string NombreJugador { get; set; }
 
-        [ForeignKey("TipoJugador")]
+        [ForeignKey(nameof(TipoJugador))]
         public int IdTipoJugador { get; set; }
 
-        public string NombreTipoJugador => this.TipoJugador.NombreTipoJugador;
-
-        [JsonIgnore] public virtual TipoJugador TipoJugador { get; set; }
+       public virtual TipoJugador TipoJugador { get; set; }
     }
 }

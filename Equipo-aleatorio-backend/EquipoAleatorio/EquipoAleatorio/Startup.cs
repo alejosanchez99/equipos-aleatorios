@@ -50,6 +50,7 @@ namespace EquipoAleatorio
         public void AddDependencyInjection(IServiceCollection services)
         {
             services.AddTransient<IJugadorNegocio, JugadorNegocio>();
+            services.AddTransient<IEquipoNegocio, EquipoNegocio>();
             services.AddTransient<IJugadorRepositorio, JugadorRepositorio>();
 
         }

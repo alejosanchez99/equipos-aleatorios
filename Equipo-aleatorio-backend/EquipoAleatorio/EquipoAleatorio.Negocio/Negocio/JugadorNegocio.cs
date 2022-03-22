@@ -1,6 +1,7 @@
 ﻿namespace EquipoAleatorio.Negocio.Negocio
 {
     using System.Collections.Generic;
+    using System.Linq;
     using EquipoAleatorio.AccesoDatos.Interfaces;
     using EquipoAleatorio.Entidades.Contexto;
     using EquipoAleatorio.Negocio.Interfaces;
@@ -21,7 +22,7 @@
 
         public IEnumerable<Jugador> ConsultarJugadores()
         {
-            return this.jugadorRepositorio.Consultar();
+            return this.jugadorRepositorio.Consultar().OrderBy(x => x.IdTipoJugador);
         }
     }
 }

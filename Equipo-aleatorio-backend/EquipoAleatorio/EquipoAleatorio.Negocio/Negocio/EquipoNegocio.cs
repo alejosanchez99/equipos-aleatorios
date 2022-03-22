@@ -4,14 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
     using EquipoAleatorio.Entidades.Contexto;
+    using EquipoAleatorio.Entidades.Negocio;
+    using EquipoAleatorio.Negocio.Interfaces;
 
-    public class EquipoNegocio
+    public class EquipoNegocio : IEquipoNegocio
     {
-        public Entidades.Negocio.Equipo AgruparEquipos(IEnumerable<Jugador> jugadores)
+        public SeleccionEquipo EscogerEquipos(IEnumerable<Jugador> jugadores)
         {
-            Entidades.Negocio.Equipo equipo = new Entidades.Negocio.Equipo();
-
-            IEnumerable<IGrouping<int, Jugador>> jugadoresAgrupadosPosicion = jugadores.GroupBy(x => x.TipoJugador.IdTipoJugador);
+            IEnumerable<IGrouping<int, Jugador>> jugadoresAgrupadosPosicion = jugadores.GroupBy(x => x.IdTipoJugador);
 
             List<Jugador> arqueros = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.Arquero);
             List<Jugador> defensas = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.Defensa);
@@ -20,7 +20,6 @@
 
             List<Jugador> jugadoresEquipoUno = new List<Jugador>(0);
             List<Jugador> jugadoresEquipoDos = new List<Jugador>(0);
-
 
             jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(arqueros));
             jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(defensas));
@@ -34,7 +33,20 @@
             jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(volantes, idsJugadoresUno));
             jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(delanteros, idsJugadoresUno));
 
-            return equipo;
+
+            SeleccionEquipo seleccionEquipo = new SeleccionEquipo
+            {
+                EquipoUno = new Equipo
+                {
+                    Jugadores = jugadoresEquipoUno.OrderBy(x => x.IdTipoJugador).ToList()
+                },
+                EquipoDos = new Equipo
+                {
+                    Jugadores = jugadoresEquipoDos.OrderBy(x => x.IdTipoJugador).ToList()
+                }
+            };
+
+            return seleccionEquipo;
         }
 
         private List<Jugador> EstablecerJugadoresAleatoriosEquipoDos(IEnumerable<Jugador> jugadores, List<int> idsJugadoresUno)
@@ -57,20 +69,20 @@
             Random numeroAletorio = new Random();
 
             int indiceValor = 0;
-            List<int> idsAleatorios = new List<int>(0);
+            List<int> indicesAleatorios = new List<int>(0);
 
             while (indiceValor < cantidadJugadoresPorTipo)
             {
                 int valorNumeroAleatorio = numeroAletorio.Next(0, valorMaximoGenerado);
 
-                if (!idsAleatorios.Contains(valorNumeroAleatorio))
+                if (!indicesAleatorios.Contains(valorNumeroAleatorio))
                 {
-                    idsAleatorios.Add(valorNumeroAleatorio);
+                    indicesAleatorios.Add(valorNumeroAleatorio);
                     indiceValor++;
                 }
             }
 
-            return idsAleatorios;
+            return indicesAleatorios;
         }
 
         private static List<Jugador> ObtenerJugadoresPorPosicion(IEnumerable<IGrouping<int, Jugador>> jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador tipoJugador)

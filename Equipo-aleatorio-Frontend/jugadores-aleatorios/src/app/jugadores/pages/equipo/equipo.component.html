@@ -9,38 +9,38 @@
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef>
           <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [checked]="jugadoresSeleccionados.hasValue() && isAllSelected()"
+                        [indeterminate]="jugadoresSeleccionados.hasValue() && !isAllSelected()"
                         color="primary">
           </mat-checkbox>
         </th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let jugador">
           <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
+                        (change)="$event ? jugadoresSeleccionados.toggle(jugador) : null"
+                        [checked]="jugadoresSeleccionados.isSelected(jugador)"
                         color="primary">
           </mat-checkbox>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="position">
+      <ng-container matColumnDef="idJugador">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.idJugador}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <ng-container matColumnDef="nombreJugador">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.nombreJugador}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <ng-container matColumnDef="nombreTipoJugador">
+        <th mat-header-cell *matHeaderCellDef> Posición </th>
+        <td mat-cell *matCellDef="let jugador"> {{jugador.tipoJugador.nombreTipoJugador}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-          (click)="selection.toggle(row)">
+          (click)="jugadoresSeleccionados.toggle(row)">
       </tr>
     </table>
   </div>

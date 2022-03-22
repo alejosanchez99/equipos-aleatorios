@@ -39,7 +39,6 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {}
 
   guardarJugador() {
-     console.log(this.jugador)
     this.jugadorService.guardarJugador(this.jugador).subscribe(resp => {
        console.log('respuesta', resp);
      });

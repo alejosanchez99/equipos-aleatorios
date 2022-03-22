@@ -20,7 +20,6 @@ export class ListadoComponent implements OnInit {
     this.jugadoresService.consultarJugadores()
     .subscribe(jugadores => {
       this.jugadores = jugadores;
-      console.log(jugadores);
       this.dataSource = new MatTableDataSource<Jugador>(this.jugadores);
     })
   }

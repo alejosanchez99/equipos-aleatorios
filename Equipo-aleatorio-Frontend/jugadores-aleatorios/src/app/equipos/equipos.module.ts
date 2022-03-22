@@ -6,7 +6,7 @@ import { MaterialModule } from '../material/material.module';
 
 import { BotonFlotanteComponent } from './components/boton-flotante/boton-flotante.component';
 import { SeleccionEquiposComponent } from './../equipos/pages/seleccion-equipos/seleccion-equipos.component';
-import { EquipoComponent } from './../equipos/pages/equipo/equipo.component';
+import { EquipoComponent } from '../jugadores/pages/equipo/equipo.component';
 
 
 @NgModule({

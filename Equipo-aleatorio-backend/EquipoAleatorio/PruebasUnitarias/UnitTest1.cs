@@ -216,7 +216,7 @@ namespace PruebasUnitarias
             EquipoNegocio equipo = new EquipoNegocio();
 
             
-            equipo.AgruparEquipos(jugadores);
+            equipo.EscogerEquipos(jugadores);
 
         }
     }

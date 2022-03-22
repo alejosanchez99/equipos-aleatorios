@@ -6,3 +6,21 @@
   color: white;
   text-align: center;
 }
+
+.contenedorTabla{
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  overflow-y: scroll;
+  background: white;
+  box-shadow: inset 0 0 4px #707070;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6f42c1;
+  border-radius: 10px;
+}
