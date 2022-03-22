@@ -1,3 +1,4 @@
+import { EquiposModule } from './../equipos/equipos.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +17,7 @@ import { JugadoresModule } from '../jugadores/jugadores.module';
     FormsModule,
     MaterialModule,
     JugadoresModule,
+    EquiposModule,
     SharedRoutingModule
   ],
   exports: [
