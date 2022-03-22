@@ -4,19 +4,24 @@
 
       <mat-card-content fxLayout="column">
           <mat-form-field>
-              <input matInput placeholder="Nombre jugador" required>
+              <input matInput
+                    placeholder="Nombre jugador"
+                    [(ngModel)]="jugador.nombreJugador"
+                    required>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Posición</mat-label>
-            <mat-select required>
-                <mat-option *ngFor="let posicion of posiciones"
-                            [value]="posicion.id">
-                    {{ posicion.nombre }}
+            <mat-select
+            [(ngModel)]="jugador.idTipoJugador"
+            required>
+                <mat-option *ngFor="let tipoJugador of tipoJugadores"
+                            [value]="tipoJugador.id">
+                    {{ tipoJugador.nombre }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
       </mat-card-content>
 
-      <button mat-raised-button color="primary">Guardar</button>
+      <button mat-raised-button color="primary" (click)="guardarJugador()">Guardar</button>
   </mat-card>
 </div>

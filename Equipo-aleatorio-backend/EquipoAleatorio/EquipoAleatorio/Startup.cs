@@ -20,9 +20,24 @@ namespace EquipoAleatorio
         }
 
         public IConfiguration Configuration { get; }
+
+
+        private const string CorsPolicy = "CorsPolicy";
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CorsPolicy, builder => builder
+                .WithOrigins(Configuration?.GetSection("ConfigurationApplication:CorsPolicyOrigins").Value.Split('|'))
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+            });
+
+            services.AddDbContext<ApplicationDbContext>(option =>
+            option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"))
+            .UseLazyLoadingProxies());
             services.AddControllers();
             AddDependencyInjection(services);
         }
@@ -52,6 +67,8 @@ namespace EquipoAleatorio
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(CorsPolicy);
 
             app.UseEndpoints(endpoints =>
             {
