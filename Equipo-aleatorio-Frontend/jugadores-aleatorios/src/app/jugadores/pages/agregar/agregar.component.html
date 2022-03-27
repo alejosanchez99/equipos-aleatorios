@@ -22,6 +22,6 @@
         </mat-form-field>
       </mat-card-content>
 
-      <button mat-raised-button color="primary" (click)="guardarJugador()">Guardar</button>
+      <button mat-raised-button color="primary" [disabled]="!jugador.nombreJugador || jugador.idTipoJugador == 0" (click)="guardarJugador()">Guardar</button>
   </mat-card>
 </div>

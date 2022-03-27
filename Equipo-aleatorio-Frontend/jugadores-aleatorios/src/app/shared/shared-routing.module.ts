@@ -13,7 +13,6 @@ const rutas: Routes = [
     component: HomeComponent,
     children: [
       { path: 'agregar', component: AgregarComponent },
-      { path: 'listado', component: ListadoComponent },
       { path: 'equipo', component: EquipoComponent },
       { path: 'seleccion-equipos', component: SeleccionEquiposComponent },
       { path: '**', redirectTo: 'agregar' }

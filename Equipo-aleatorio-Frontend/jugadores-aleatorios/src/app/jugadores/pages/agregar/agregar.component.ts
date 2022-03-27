@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { JugadoresService } from '../../services/jugadores.service';
 import { Jugador } from '../../interfaces/jugador.interface';
@@ -34,13 +35,31 @@ export class AgregarComponent implements OnInit {
     idTipoJugador: 0,
   };
 
-  constructor(private jugadorService: JugadoresService) {}
+  constructor(private jugadorService: JugadoresService,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {}
 
+  inicializarJugador() {
+    this.jugador = {
+      idJugador: 0,
+      nombreJugador: '',
+      idTipoJugador: 0,
+    };
+  }
   guardarJugador() {
     this.jugadorService.guardarJugador(this.jugador).subscribe(resp => {
-       console.log('respuesta', resp);
-     });
+      this.mostrarMensaje('Se ha guardado exitosamente')
+      this.inicializarJugador();
+    },
+      error => {
+        this.mostrarMensaje('Ya existe un jugador con ese nombre')
+    });
+  }
+
+  mostrarMensaje(mensaje: string) {
+    this.snackBar.open(mensaje, 'Cerrar', {
+      duration: 2000
+    });
   }
 }
