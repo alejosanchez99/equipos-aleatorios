@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { JugadoresService } from '../../services/jugadores.service';
-import { Jugador } from '../../interfaces/jugador.interface';
+import { Jugador, TipoJugador } from '../../interfaces/jugador.interface';
 
 @Component({
   selector: 'app-agregar',
@@ -10,24 +10,7 @@ import { Jugador } from '../../interfaces/jugador.interface';
   styleUrls: ['./agregar.component.css'],
 })
 export class AgregarComponent implements OnInit {
-  tipoJugadores = [
-    {
-      id: 1,
-      nombre: 'Arquero',
-    },
-    {
-      id: 2,
-      nombre: 'Defensa',
-    },
-    {
-      id: 3,
-      nombre: 'Volante',
-    },
-    {
-      id: 4,
-      nombre: 'Delantero',
-    },
-  ];
+  tipoJugadores: TipoJugador[] = [];
 
   jugador: Jugador = {
     idJugador: 0,
@@ -38,7 +21,11 @@ export class AgregarComponent implements OnInit {
   constructor(private jugadorService: JugadoresService,
               private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.jugadorService.consultarTipoJugador().subscribe(resp => {
+      this.tipoJugadores = resp;
+    })
+  }
 
   inicializarJugador() {
     this.jugador = {

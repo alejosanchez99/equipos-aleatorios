@@ -51,8 +51,9 @@ namespace EquipoAleatorio
         {
             services.AddTransient<IJugadorNegocio, JugadorNegocio>();
             services.AddTransient<IEquipoNegocio, EquipoNegocio>();
+            services.AddTransient<ITipoJugadorNegocio, TipoJugadorNegocio>();
             services.AddTransient<IJugadorRepositorio, JugadorRepositorio>();
-
+            services.AddTransient<ITipoJugadorRepositorio, TipoJugadorRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

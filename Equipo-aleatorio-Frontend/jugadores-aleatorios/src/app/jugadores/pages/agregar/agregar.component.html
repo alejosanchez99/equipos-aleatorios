@@ -15,8 +15,8 @@
             [(ngModel)]="jugador.idTipoJugador"
             required>
                 <mat-option *ngFor="let tipoJugador of tipoJugadores"
-                            [value]="tipoJugador.id">
-                    {{ tipoJugador.nombre }}
+                            [value]="tipoJugador.idTipoJugador">
+                    {{ tipoJugador.nombreTipoJugador }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
