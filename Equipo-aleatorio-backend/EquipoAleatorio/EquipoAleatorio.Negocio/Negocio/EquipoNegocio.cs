@@ -14,7 +14,8 @@
             IEnumerable<IGrouping<int, Jugador>> jugadoresAgrupadosPosicion = jugadores.GroupBy(x => x.IdTipoJugador);
 
             List<Jugador> arqueros = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.Arquero);
-            List<Jugador> defensas = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.Defensa);
+            List<Jugador> defensasLaterales = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.DefensaLateral);
+            List<Jugador> defensasCentrales = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.DefensaCentral);
             List<Jugador> volantes = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.Volante);
             List<Jugador> delanteros = ObtenerJugadoresPorPosicion(jugadoresAgrupadosPosicion, Entidades.Negocio.TipoJugador.Delantero);
 
@@ -22,14 +23,16 @@
             List<Jugador> jugadoresEquipoDos = new List<Jugador>(0);
 
             jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(arqueros));
-            jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(defensas));
+            jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(defensasLaterales));
+            jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(defensasCentrales));
             jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(volantes));
             jugadoresEquipoUno.AddRange(EstablecerJugadoresAleatoriosEquipoUno(delanteros));
 
             List<int> idsJugadoresUno = jugadoresEquipoUno.Select(jugadorEquipoUno => jugadorEquipoUno.IdJugador).ToList();
 
             jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(arqueros, idsJugadoresUno));
-            jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(defensas, idsJugadoresUno));
+            jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(defensasLaterales, idsJugadoresUno));
+            jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(defensasCentrales, idsJugadoresUno));
             jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(volantes, idsJugadoresUno));
             jugadoresEquipoDos.AddRange(this.EstablecerJugadoresAleatoriosEquipoDos(delanteros, idsJugadoresUno));
 

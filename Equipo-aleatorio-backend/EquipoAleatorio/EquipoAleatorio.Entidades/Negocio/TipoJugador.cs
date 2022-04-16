@@ -7,8 +7,9 @@
     public enum TipoJugador
     {
         Arquero = 1,
-        Defensa = 2,
-        Volante = 3,
-        Delantero = 4
+        DefensaLateral = 2,
+        DefensaCentral = 3,
+        Volante = 4,
+        Delantero = 5
     }
 }
